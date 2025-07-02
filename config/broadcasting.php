@@ -38,11 +38,19 @@ return [
     'options' => [
         'cluster'   => env('PUSHER_APP_CLUSTER'),
         'encrypted' => false,
-        'host'      => '127.0.0.1',
-        'port'      => env('WEBSOCKETS_PORT', 6001),
-        'scheme'    => 'http',
+        'useTLS'    => false, // 👈 IMPORTANT
+        'host'      => env('PUSHER_HOST', '127.0.0.1'),
+        'port'      => env('PUSHER_PORT', 6001),
+        'scheme'    => env('PUSHER_SCHEME', 'http'),
+
+        // 👇 Prevent SSL verification issues
+        'curl_options' => [
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+        ],
     ],
 ],
+
 
 
         'ably' => [

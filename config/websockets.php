@@ -48,8 +48,9 @@ return [
      * Leave this empty if you want to accept requests from all hosts.
      */
     'allowed_origins' => [
-        //
-    ],
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+],
 
     /*
      * The maximum request size in kilobytes that is allowed for an incoming WebSocket request.
